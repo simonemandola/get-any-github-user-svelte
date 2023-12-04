@@ -1,0 +1,73 @@
+@font-face {
+  font-family: "icons";
+  src: url("src/assets/fonts/icons.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "icons", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  speak: never;
+
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+.icon-search:before { content: '\e800'; } /* '' */
+.icon-cancel:before { content: '\e801'; } /* '' */
+.icon-location:before { content: '\e802'; } /* '' */
+.icon-link:before { content: '\e803'; } /* '' */
+.icon-user:before { content: '\e804'; } /* '' */
+.icon-group:before { content: '\e805'; } /* '' */
+.icon-spin:before { content: '\e839'; } /* '' */
+.icon-link-ext:before { content: '\f08e'; } /* '' */
+.icon-twitter:before { content: '\e807'; } /* '' */
+.icon-angle-double-left:before { content: '\f100'; } /* '' */
+.icon-angle-double-right:before { content: '\f101'; } /* '' */
+.icon-angle-left:before { content: '\f104'; } /* '' */
+.icon-angle-right:before { content: '\f105'; } /* '' */
+.icon-youtube:before { content: '\f16a'; } /* '' */
+.icon-flickr:before { content: '\f303'; } /* '' */
+.icon-vimeo:before { content: '\f306'; } /* '' */
+.icon-facebook:before { content: '\f30c'; } /* '' */
+.icon-pinterest:before { content: '\f312'; } /* '' */
+.icon-tumblr:before { content: '\f315'; } /* '' */
+.icon-linkedin:before { content: '\f318'; } /* '' */
+.icon-dribbble:before { content: '\f31b'; } /* '' */
+.icon-spotify:before { content: '\f327'; } /* '' */
+.icon-instagram:before { content: '\f32d'; } /* '' */
+.icon-soundcloud:before { content: '\f348'; } /* '' */
+.icon-behance:before { content: '\f34e'; } /* '' */
+.icon-book:before { content: '\e806'; } /* '' */
+.icon-github:before { content: '\f09b'; } /* '' */
+.icon-mail:before { content: '\f0e0'; } /* '' */
+.icon-building:before { content: '\f0f7'; } /* '' */
+.icon-twitch:before { content: '\f1e8'; } /* '' */
+.icon-tiktok:before { content: '\e808'; } /* '' */

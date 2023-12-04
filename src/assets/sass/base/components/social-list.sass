@@ -1,0 +1,23 @@
+@use "sass:map"
+@use "../../abstract/variables" as global_vars
+
+.social-list
+  margin-block: map.get(global_vars.$gap, "xxs")
+  display: grid
+  grid-template-columns: repeat(auto-fit, minmax(0, auto))
+  justify-content: start
+  align-items: center
+  gap: map.get(global_vars.$gap, "xxxs")
+
+  &__item
+    display: flex
+    justify-content: center
+    align-items: center
+
+    & > a
+      color: map.get(global_vars.$color, "grey-dark")
+      cursor: pointer
+      transition: map.get(global_vars.$transitions, "main")
+
+      &:hover
+        transform: scale(1.2)

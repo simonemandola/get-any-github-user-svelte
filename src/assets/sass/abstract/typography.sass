@@ -1,0 +1,39 @@
+@use "sass:map"
+@use "../abstract/variables" as global_vars
+
+.text--title-lg
+  font-size: 4.5rem
+  line-height: 1
+  font-weight: 700
+
+.text--title-sm
+  font-size: 2.1rem
+  line-height: 1.2
+  font-weight: 700
+
+.text--title-xs
+  font-size: 1.5rem
+  line-height: 1.2
+  font-weight: 700
+
+.text--body
+  font-size: 1rem
+  line-height: 1.2
+
+.text--small
+  font-size: .9rem
+
+.text--caption
+  font-size: .6rem
+
+.text--bold
+  font-weight: 700
+
+.text--center
+  text-align: center
+
+.text--grey--dark
+  color: map.get(global_vars.$color, "grey-dark")
+
+.text--red
+  color: map.get(global_vars.$color, "red")

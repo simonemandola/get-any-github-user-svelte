@@ -1,0 +1,30 @@
+@use "sass:map"
+@use "../../abstract/variables" as global_vars
+
+.toast
+  position: absolute
+  top: map.get(global_vars.$space, "xxs")
+  max-height: 100%
+  overflow: auto
+  right: map.get(global_vars.$gap, "m")
+  z-index: 99999
+
+  & > ul
+    display: flex
+    flex-direction: column
+    row-gap: map.get(global_vars.$gap, "s")
+
+    & > li
+      padding: map.get(global_vars.$gap, "s")
+      box-sizing: border-box
+      border-radius: map.get(global_vars.$radius, "xxs")
+      background-color: map.get(global_vars.$color, "red")
+      border: 1px solid darken(map.get(global_vars.$color, "red"), 10%)
+      border-left-width: map.get(global_vars.$gap, "xxs")
+      display: flex
+      justify-content: center
+      align-content: center
+      width: fit-content
+      min-width: 18rem
+      color: map.get(global_vars.$color, "white")
+      box-shadow: map.get(global_vars.$box-shadow, "m")

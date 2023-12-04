@@ -1,9 +1,21 @@
-body
-  background-color: whitesmoke
+@use "sass:map"
+@use "../abstract/variables" as global_vars
 
-main
-  display: flex
-  flex-direction: column
-  justify-content: center
-  align-items: center
-  min-height: 100vh
+body
+  font-family: "TitilliumWeb", sans-serif
+  color: map.get(global_vars.$color, "black")
+  background:
+    color: map.get(global_vars.$color, "grey-light")
+    image: linear-gradient(145deg, map.get(global_vars.$color, "grey-soft"), map.get(global_vars.$color, "indigo"))
+    blend-mode: multiply
+
+#app
+    min-height: 100vh
+
+.container
+  max-width: 1280px
+  padding-inline: map.get(global_vars.$gap, "m")
+  margin: 0 auto
+
+.block-scroll
+  overflow: hidden

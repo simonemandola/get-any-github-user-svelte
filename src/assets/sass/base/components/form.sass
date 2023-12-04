@@ -1,0 +1,16 @@
+@use "sass:map"
+@use "../../abstract/variables" as global_vars
+
+.form
+  width: fit-content
+  height: 3rem
+  margin: 0 auto
+  display: grid
+  grid-template-columns: minmax(0, map.get(global_vars.$space, "xxl")) auto
+  justify-content: center
+  align-items: start
+  column-gap: map.get(global_vars.$gap, "xs")
+  padding-top: map.get(global_vars.$gap, "xxs")
+
+  &__submit
+    height: 100%

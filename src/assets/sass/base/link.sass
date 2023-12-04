@@ -1,0 +1,14 @@
+@use "sass:map"
+@use "../abstract/variables" as global_vars
+
+.link
+  display: flex
+  justify-content: flex-start
+  align-items: center
+  column-gap: map.get(global_vars.$gap, "xxs")
+  transition: map.get(global_vars.$transitions, "main")
+
+  &--main
+
+    &:hover
+      color: map.get(global_vars.$color, "indigo")

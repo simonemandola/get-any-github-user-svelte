@@ -1,0 +1,22 @@
+@use "sass:map"
+
+// colors
+$color: ("black": #151515, "white": #f5f5f5, "grey-dark": #2c4454, "grey-pale": #88ABC2, "grey-soft": #D0E0EB, "grey-light": #EBF7F8, "lime": #CAFF42, "red": #B3342B, "indigo": #5E2BFF)
+
+// gaps
+$gap: ("l": 1.75rem, "m": 1.5rem, "s": 1rem, "xs": .75rem, "xxs": .5rem, "xxxs": .25rem)
+
+// spaces
+$space: ("xxl": 32rem, "xl": 26rem, "l": 18rem, "m": 14rem, "s": 10rem, "xs": 6rem, "xxs": 4rem)
+
+// borders
+$border: ("main-gray-pale": 1px solid map.get($color, "grey-pale"), "thick-gray-pale": 2px solid map.get($color, "grey-pale"))
+
+// radius
+$radius: ("xs": .5rem, "xxs": .25rem)
+
+// box-shadow
+$box-shadow: ("l": (0 .625rem .938rem -.188rem transparentize(map.get($color, "black"), .5), 0 .25rem .375rem -.25rem  transparentize(map.get($color, "black"), .5)), "m": (0 .25rem .375rem -1px transparentize(map.get($color, "black"), .65), 0 .125rem .25rem -125rem transparentize(map.get($color, "black"), .65)), "s": (0 1px 2px 0 transparentize(map.get($color, "black"), .65)))
+
+// transitions
+$transitions: ("main": 400ms ease-in-out, "fast": 200ms ease)

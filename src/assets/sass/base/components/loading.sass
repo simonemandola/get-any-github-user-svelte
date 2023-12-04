@@ -1,0 +1,18 @@
+@use "sass:map"
+@use "../../abstract/variables" as global_vars
+
+.loading
+  position: fixed
+  inset: 0
+  display: flex
+  justify-content: center
+  align-items: center
+  background-color: transparentize(map.get(global_vars.$color, "black"), .25)
+  backdrop-filter: blur(3px)
+  z-index: 99999
+
+  & > main > p
+    color: map.get(global_vars.$color, "white")
+
+    & > i
+      display: inline-block

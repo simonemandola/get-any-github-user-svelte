@@ -1,0 +1,51 @@
+@use "sass:map"
+@use "../abstract/variables" as global_vars
+
+.button
+  display: flex
+  justify-content: center
+  align-items: center
+  width: fit-content
+  padding: map.get(global_vars.$gap, "xs") map.get(global_vars.$gap, "m")
+  box-sizing: border-box
+  border-radius: map.get(global_vars.$radius, "xxs")
+  transition: map.get(global_vars.$transitions, "main")
+
+  &:hover
+    box-shadow: map.get(global_vars.$box-shadow, "m")
+
+  &--primary
+    background-color: map.get(global_vars.$color, "grey-pale")
+    color: map.get(global_vars.$color, "white")
+
+    &:hover
+      background-color: map.get(global_vars.$color, "grey-dark")
+
+    &:active
+      outline: .15rem solid map.get(global_vars.$color, "grey-dark")
+
+    &:focus
+      outline: 2px solid map.get(global_vars.$color, "indigo")
+
+    &:disabled
+      opacity: .5
+      pointer-events: none
+      filter: saturate(0)
+
+  &--secondary
+    background-color: map.get(global_vars.$color, "indigo")
+    color: map.get(global_vars.$color, "white")
+
+    &:hover
+      background-color: map.get(global_vars.$color, "grey-dark")
+
+    &:active
+      outline: .15rem solid map.get(global_vars.$color, "grey-dark")
+
+    &:focus
+      outline: 2px solid map.get(global_vars.$color, "indigo")
+
+    &:disabled
+      opacity: .5
+      pointer-events: none
+      filter: saturate(0)

@@ -1,0 +1,27 @@
+@keyframes spinner
+  from
+    transform: rotateZ(0)
+  to
+    transform: rotateZ(360deg)
+
+@keyframes ping
+  75%, 100%
+    transform: scale(1.5)
+    opacity: 0
+
+.animation
+
+  &--spinner
+    animation:
+      name: spinner
+      duration: 1500ms
+      iteration-count: infinite
+      timing-function: linear
+
+  &--ping
+    animation:
+      name: ping
+      duration: 1500ms
+      iteration-count: infinite
+      timing-function: cubic-bezier(0, 0, 0.2, 1)
+
