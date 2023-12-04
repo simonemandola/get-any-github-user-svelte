@@ -1,0 +1,142 @@
+@use "sass:map"
+@use "../../abstract/variables" as global_vars
+
+.result
+
+  & .form
+    padding-top: map.get(global_vars.$space, "s")
+
+  &__total-count
+    padding-top: map.get(global_vars.$gap, "s")
+
+  &__title
+    text-align: center
+
+  &__list
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: stretch
+    column-gap: map.get(global_vars.$gap, "xxs")
+    height: 100%
+    min-height: map.get(global_vars.$space, "l")
+    max-height: map.get(global_vars.$space, "xxl")
+    padding:
+      top: map.get(global_vars.$gap, "m")
+      left: map.get(global_vars.$gap, "m")
+      bottom: map.get(global_vars.$gap, "m")
+    box-sizing: content-box
+    overflow: auto
+    scrollbar-width: none
+    scroll-snap-type: x mandatory
+
+    &::-webkit-scrollbar
+      display: none
+
+    &__item
+      width: map.get(global_vars.$space, "xl")
+      height: auto
+      flex-shrink: 0
+      margin-right: map.get(global_vars.$gap, "xs")
+      scroll-snap-align: start
+
+      &:last-child:not(:first-child) > &__card
+        width: 100%
+        padding-right: map.get(global_vars.$gap, "m")
+        box-sizing: content-box
+
+        &::before
+          width: calc(100% - map.get(global_vars.$gap, "m"))
+
+      &__card
+        height: 100%
+        position: relative
+
+        &::before
+          content: ""
+          inset: 0
+          position: absolute
+          z-index: -1
+          border-radius: map.get(global_vars.$radius, "xs")
+          transition: map.get(global_vars.$transitions, "main")
+
+        &__inner-wrap
+          $avatar-size: 4rem
+          width: 100%
+          height: 100%
+          padding: map.get(global_vars.$gap, "m")
+          box-sizing: border-box
+          border-radius: map.get(global_vars.$radius, "xs")
+          background-color: map.get(global_vars.$color, "grey-soft")
+          cursor: pointer
+          display: grid
+          grid-template-columns: $avatar-size 1fr
+          grid-template-rows: repeat(2, min-content)
+          gap: map.get(global_vars.$gap, "s") map.get(global_vars.$gap, "s")
+          justify-items: start
+          align-items: center
+
+          & > .avatar--img,
+          & > .avatar--placeholder
+            height: $avatar-size
+
+          & > .avatar--placeholder::before
+            font-size: 1.5rem
+
+          &__username
+            width: fit-content
+            height: fit-content
+
+            &__icon-link
+              margin-left: map.get(global_vars.$gap, "xxxs")
+              transition: map.get(global_vars.$transitions, "main")
+              opacity: 0
+
+              &::before
+                font-size: .8rem
+
+            &:hover
+              text-decoration: underline
+
+            &:hover &__icon-link
+              opacity: 1
+
+
+          &__details
+            width: 100%
+            grid-column: 1/3
+            display: grid
+            grid-auto-flow: row
+            grid-template-columns: repeat(5, minmax(0, 1fr))
+            row-gap: map.get(global_vars.$gap, "m")
+            padding-top: map.get(global_vars.$gap, "s")
+            box-sizing: border-box
+            border-top: map.get(global_vars.$border, "main-gray-pale")
+
+            &__followers__list
+              display: grid
+              grid-template-columns: repeat(auto-fit, map.get(global_vars.$gap, "m"))
+              gap: map.get(global_vars.$gap, "xxs")
+              grid-area: 2/1/3/6
+
+              &__item
+                display: flex
+                justify-content: center
+                align-items: center
+                height: map.get(global_vars.$gap, "m")
+                transition: map.get(global_vars.$transitions, "fast")
+
+                &:hover
+                  transform: scale(1.2)
+
+                & .avatar--img
+                  display: inline-flex
+                  overflow: hidden
+                  width: map.get(global_vars.$gap, "m")
+                  height: map.get(global_vars.$gap, "m")
+
+                & > .avatar--placeholder::before
+                  font-size: .8rem
+
+        &:hover::before
+          box-shadow: map.get(global_vars.$box-shadow, "l")

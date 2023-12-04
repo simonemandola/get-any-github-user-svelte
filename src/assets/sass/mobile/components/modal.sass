@@ -1,0 +1,221 @@
+@use "sass:map"
+@use "../../mixins/mixins" as use-mixin
+@use "../../abstract/variables" as global_vars
+
+.modal
+  position: fixed
+  inset: 0
+  display: flex
+  justify-content: center
+  align-items: center
+  background-color: transparentize(map.get(global_vars.$color, "black"), .25)
+  backdrop-filter: blur(3px)
+  padding: map.get(global_vars.$gap, "m") map.get(global_vars.$gap, "xs")
+  z-index: 99999
+
+  &__content
+    width: 100%
+    height: 80%
+    max-height: map.get(global_vars.$space, "xl") * 2
+    padding: map.get(global_vars.$gap, "l")
+    background-color: map.get(global_vars.$color, "grey-pale")
+    border-radius: map.get(global_vars.$radius, "xs")
+    position: relative
+    overflow: auto
+
+    &__close
+      display: block
+      margin-left: auto
+      width: map.get(global_vars.$gap, "m") * 2
+      height: map.get(global_vars.$gap, "m") * 2
+      border-radius: map.get(global_vars.$radius, "xxs")
+      transition: map.get(global_vars.$transitions, "main")
+      position: absolute
+      top: map.get(global_vars.$gap, "xs")
+      right: map.get(global_vars.$gap, "xs")
+      color: map.get(global_vars.$color, "white")
+      z-index: 50
+
+      &:hover
+        background-color: transparentize(map.get(global_vars.$color, "grey-soft"), .75)
+        box-shadow: map.get(global_vars.$box-shadow, "s")
+
+    &__main
+      display: flex
+      flex-direction: column
+
+      &__header > .avatar--img,
+      &__header > .avatar--placeholder
+        $avatar-size: map.get(global_vars.$space, "s") * 0.8
+        width: $avatar-size
+        height: $avatar-size
+        position: relative
+        z-index: 10
+        justify-self: center
+
+      &__header > .avatar--placeholder
+        font-size: 2.5rem
+
+      &__header
+        $text-shadow: 0 .125rem map.get(global_vars.$color, "black")
+        display: grid
+        grid-template-columns: 1fr
+        grid-template-rows: repeat(auto-fit, minmax(0, auto))
+        align-items: center
+        padding:
+          top: map.get(global_vars.$gap, "s")
+          bottom: map.get(global_vars.$gap, "l") * 1.5
+        position: relative
+
+        &::before
+          content: ""
+          position: absolute
+          top: - map.get(global_vars.$gap, "l")
+          left: - map.get(global_vars.$gap, "l")
+          right: - map.get(global_vars.$gap, "l")
+          bottom: 0
+          border-bottom-left-radius: 4rem .5rem
+          border-bottom-right-radius: 4rem .25rem
+          background:
+            image: url("src/assets/img/card-bg.webp")
+            repeat: no-repeat
+            size: cover
+          z-index: 0
+
+        & .social-list
+          margin-top: map.get(global_vars.$gap, "s")
+          justify-content: center
+          z-index: 1
+
+          &__item
+            background-color: transparentize(map.get(global_vars.$color, "black"), .25)
+            padding: map.get(global_vars.$gap, "xxxs")
+            backdrop-filter: blur(2px)
+            border-radius: .125rem
+
+            & > a
+              text-shadow: $text-shadow
+              color: map.get(global_vars.$color, "white")
+
+              &:hover
+                color: map.get(global_vars.$color, "grey-pale")
+                transform: scale(1)
+
+        &__name
+          justify-self: start
+          position: relative
+          z-index: 10
+          color: map.get(global_vars.$color, "white")
+          text-shadow: $text-shadow
+          padding-top: map.get(global_vars.$gap, "xxs")
+          font-size: 1.5rem
+
+      &__body
+        height: 100%
+        display: flex
+        flex-direction: column
+        row-gap: map.get(global_vars.$gap, "xs")
+
+        &__contact-info
+          display: grid
+          grid-template-rows: repeat(2, 1fr)
+          row-gap: map.get(global_vars.$gap, "s")
+          justify-content: center
+          align-items: center
+          padding: map.get(global_vars.$gap, "xxs")
+          box-sizing: border-box
+          background-color: map.get(global_vars.$color, "grey-soft")
+          border-radius: map.get(global_vars.$radius, "xxs")
+          position: relative
+          top: - map.get(global_vars.$gap, "s")
+          box-shadow: map.get(global_vars.$box-shadow, "m")
+
+          & > li
+            width: 100%
+            word-break: break-all
+            @include use-mixin.line-clamp()
+
+        &__bio
+          padding-bottom: map.get(global_vars.$gap, "m")
+
+        &__company
+          padding-block: map.get(global_vars.$gap, "xxs")
+
+        &__repos-and-followers
+          display: grid
+          grid-template-columns: 1fr
+          grid-template-rows: repeat(3, minmax(0, 1fr))
+          justify-content: space-between
+          align-items: center
+          row-gap: map.get(global_vars.$gap, "s")
+
+          & > div
+            width: 100%
+            padding: map.get(global_vars.$gap, "m") map.get(global_vars.$gap, "s")
+            box-sizing: border-box
+            background-color: map.get(global_vars.$color, "grey-soft")
+            border-radius: map.get(global_vars.$radius, "xxs")
+            display: flex
+            justify-content: center
+            align-items: center
+            flex-direction: column
+            row-gap: map.get(global_vars.$gap, "m")
+
+            & > h2
+              align-self: flex-start
+
+        &__location
+          padding-block: map.get(global_vars.$gap, "s")
+
+        &__last-commit-info
+
+          &__list
+            margin-block: map.get(global_vars.$gap, "s")
+            display: grid
+            grid-auto-flow: row
+            grid-template-columns: 1fr
+            gap: map.get(global_vars.$gap, "xxs")
+
+            & > li
+              width: fit-content
+              padding: map.get(global_vars.$gap, "xs")
+              box-sizing: border-box
+              border-radius: map.get(global_vars.$radius, "xs")
+              background-color: map.get(global_vars.$color, "grey-soft")
+
+        &__footer
+          display: grid
+          grid-template-columns: 1fr
+          grid-template-rows: repeat(2, 1fr)
+          justify-content: space-between
+          justify-items: center
+          align-items: center
+          row-gap: map.get(global_vars.$gap, "l")
+          padding-top: map.get(global_vars.$space, "xxs")
+          margin-top: auto
+
+          &__created
+            display: flex
+            flex-direction: column
+            justify-content: center
+            align-items: center
+            row-gap: map.get(global_vars.$gap, "xxs")
+
+          &__profile-link
+            width: 100%
+            display: block
+            text-align: center
+
+        &__not-found
+          display: flex
+          flex-direction: column
+          justify-content: center
+          align-items: center
+          row-gap: map.get(global_vars.$gap, "l")
+
+          &__title
+            padding-top: map.get(global_vars.$gap, "l")
+
+          &__img
+            width: 100%
+            max-width: map.get(global_vars.$space, "l")

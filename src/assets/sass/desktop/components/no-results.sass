@@ -1,0 +1,14 @@
+@use "sass:map"
+@use "../../abstract/variables" as global_vars
+
+.no-results
+  height: 100%
+  display: grid
+  grid-template-rows: repeat(3, minmax(0, min-content))
+  justify-content: start
+  align-content: center
+  row-gap: map.get(global_vars.$gap, "xs")
+
+  &__text,
+  & .form
+    max-width: map.get(global_vars.$space, "xl")

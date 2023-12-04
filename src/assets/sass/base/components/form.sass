@@ -3,14 +3,17 @@
 
 .form
   width: fit-content
-  height: 3rem
+  height: map.get(global_vars.$gap, "m") * 2
   margin: 0 auto
   display: grid
   grid-template-columns: minmax(0, map.get(global_vars.$space, "xxl")) auto
   justify-content: center
   align-items: start
   column-gap: map.get(global_vars.$gap, "xs")
-  padding-top: map.get(global_vars.$gap, "xxs")
+  padding:
+    top: map.get(global_vars.$gap, "xxs")
+    left: map.get(global_vars.$gap, "m")
+    right: map.get(global_vars.$gap, "m")
 
   &__submit
     height: 100%

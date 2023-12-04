@@ -1,10 +1,10 @@
 @use "sass:map"
-@use "../abstract/variables" as global_vars
+@use "../../abstract/variables" as global_vars
 
 .result
 
   & .form
-    padding-top: map.get(global_vars.$space, "s")
+    padding-top: map.get(global_vars.$space, "xs")
 
   &__total-count
     padding-top: map.get(global_vars.$gap, "s")
@@ -17,7 +17,7 @@
     flex-direction: row
     justify-content: flex-start
     align-items: stretch
-    column-gap: map.get(global_vars.$gap, "xxs")
+    column-gap: map.get(global_vars.$gap, "xxxs")
     height: 100%
     min-height: map.get(global_vars.$space, "l")
     max-height: map.get(global_vars.$space, "xxl")
@@ -34,7 +34,7 @@
       display: none
 
     &__item
-      width: map.get(global_vars.$space, "xl")
+      width: calc(100% - map.get(global_vars.$gap, "m"))
       height: auto
       flex-shrink: 0
       margin-right: map.get(global_vars.$gap, "xs")
@@ -100,7 +100,6 @@
 
             &:hover &__icon-link
               opacity: 1
-
 
           &__details
             width: 100%

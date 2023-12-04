@@ -3,6 +3,10 @@
 
     export let userUrl = ""
 
+    let icon: HTMLElement
+
+    $: if (icon?.offsetWidth === 0) icon?.classList.add("icon-globe")
+
     function getSocialProvider(provider: string, url: string): string {
         if (provider !== "generic")
             return provider
@@ -22,7 +26,7 @@
             {#each accountsData.data as account}
                 <li class="social-list__item" title={getSocialProvider(account.provider, account.url)}>
                     <a href={account.url} target="_blank">
-                        <i class={`icon-${getSocialProvider(account.provider, account.url)}`} aria-hidden="true" />
+                        <i class={`icon-${getSocialProvider(account.provider, account.url)}`} aria-hidden="true" bind:this={icon} />
                     </a>
                 </li>
             {/each}

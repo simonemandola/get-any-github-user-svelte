@@ -43,7 +43,7 @@
                         role="button"
                         tabindex="0"
                         class="result__list__item__card"
-                        style:transform="{`translateX(${logoPositionX}px)`}"
+                        style:transform="{`translateX(${$usersData.items.length > 1 ? logoPositionX : 0}px)`}"
                         on:click={(event)=> handleGetSingleUser(event, user.login)}
                         on:keyup={(event)=> handleCardKeyUpEvent(event, user.login)}
                 >

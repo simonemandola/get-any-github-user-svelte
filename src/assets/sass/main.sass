@@ -15,11 +15,19 @@
 @import "base/components/form"
 @import "base/components/paginator"
 @import "base/components/avatar"
-@import "base/components/header"
 @import "base/components/toast"
 @import "base/components/social-list"
 
-@import "desktop/home"
-@import "desktop/result"
-@import "desktop/no-results"
-@import "desktop/modal"
+@media screen and (min-width: 901px)
+  @import "desktop/home"
+  @import "desktop/components/results"
+  @import "desktop/components/no-results"
+  @import "desktop/components/modal"
+  @import "desktop/components/header"
+
+@media screen and (max-width: 900px)
+  @import "mobile/home"
+  @import "mobile/components/results"
+  @import "mobile/components/no-results"
+  @import "mobile/components/modal"
+  @import "mobile/components/header"

@@ -1,5 +1,5 @@
 @use "sass:map"
-@use "../abstract/variables" as global_vars
+@use "../../abstract/variables" as global_vars
 
 .no-results
   height: 100%
@@ -11,4 +11,5 @@
 
   &__text,
   & .form
+    padding-inline: unset
     max-width: map.get(global_vars.$space, "xl")

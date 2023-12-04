@@ -1,0 +1,26 @@
+@use "sass:map"
+@use "../../abstract/variables" as global_vars
+
+.header
+  position: fixed
+  z-index: 99999
+  left: 0
+  right: 0
+  display: grid
+  grid-template-columns: 1fr auto
+  align-items: center
+  height: map.get(global_vars.$space, "xxs")
+
+  &__title
+    width: fit-content
+    display: flex
+    justify-content: flex-start
+    align-items: center
+    transition: map.get(global_vars.$transitions, "main")
+    font-size: 1.5rem
+
+    &:hover
+      color: map.get(global_vars.$color, "indigo")
+
+  & > nav i
+    margin-left: map.get(global_vars.$gap, "xxxs")
