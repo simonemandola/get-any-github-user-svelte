@@ -9,7 +9,7 @@ export const toast = writable({
     timeout: 1000,
 })
 
-let timeoutShowToast: number
+let timeoutShowToast: ReturnType<typeof setTimeout>
 toast.subscribe((toastStore)=> {
     if (!toastStore.show)
         return clearInterval(timeoutShowToast)

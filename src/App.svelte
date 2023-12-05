@@ -8,8 +8,9 @@
   import NoResults from "@/components/NoResults.svelte"
   import Header from "@/components/Header.svelte"
   import Modal from "@/components/Modal.svelte"
+  import type {UserData} from "@/data/types";
 
-  $: existUsers = $usersData.items?.length > 0
+  $: existUsers = ($usersData as UserData).items?.length > 0
   $: mouseX = 0
   $: mouseY = 0
   $: if (!existUsers) {
