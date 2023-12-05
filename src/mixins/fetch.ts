@@ -5,7 +5,7 @@ import type {FollowersData, latestCommitData, ReposData} from "@/data/types";
 const BASE_URL = "https://api.github.com"
 
 export const headers = {
-    Authorization: "Bearer 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",
+    Authorization: "Bearer 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",
     accept: "application/vnd.github+json"
 }
 
