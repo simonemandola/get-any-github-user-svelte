@@ -5,7 +5,9 @@
     import {formatDate} from "@/mixins/date"
     import {getLatestPublicEvents} from "@/mixins/fetch"
     import SocialList from "@/components/SocialList.svelte"
+    import type {SingleUserData} from "@/data/types";
 
+    $: singleUserDataTyped = $singleUserData as SingleUserData
     $: showModal.set(Object.keys($singleUserData || {}).length > 0)
     $: if ($showModal) {
         document.body.classList.add("block-scroll")
@@ -49,41 +51,41 @@
             </button>
             <section class="modal__content__main">
                 <div class="modal__content__main__header">
-                    <Avatar avatarUrl={$singleUserData.avatar_url} avatarName={$singleUserData.login} />
-                    <SocialList userUrl={$singleUserData.url} />
-                    {#if $singleUserData.login}
-                        <h1 class="modal__content__main__header__name text--title-sm">{$singleUserData.login}</h1>
+                    <Avatar avatarUrl={singleUserDataTyped.avatar_url} avatarName={singleUserDataTyped.login} />
+                    <SocialList userUrl={singleUserDataTyped.url} />
+                    {#if singleUserDataTyped.login}
+                        <h1 class="modal__content__main__header__name text--title-sm">{singleUserDataTyped.login}</h1>
                     {/if}
                 </div>
                 <div class="modal__content__main__body">
-                    {#if $singleUserData.avatar_url}
+                    {#if singleUserDataTyped.avatar_url}
                         <ul class="modal__content__main__body__contact-info">
                             <li>
                                 <i class="icon-mail" aria-hidden="true" />
-                                {#if $singleUserData.email}
-                                    <span title="{$singleUserData.email}">{$singleUserData.email}</span>
+                                {#if singleUserDataTyped.email}
+                                    <span title="{singleUserDataTyped.email}">{singleUserDataTyped.email}</span>
                                 {:else}
                                     <span>n/d</span>
                                 {/if}
                             </li>
                             <li>
                                 <i class="icon-link" aria-hidden="true" />
-                                {#if $singleUserData.blog}
-                                    <span title="{$singleUserData.blog}">{$singleUserData.blog}</span>
+                                {#if singleUserDataTyped.blog}
+                                    <span title="{singleUserDataTyped.blog}">{singleUserDataTyped.blog}</span>
                                 {:else}
                                     <span>n/d</span>
                                 {/if}
                             </li>
                         </ul>
-                        {#if $singleUserData.bio}
+                        {#if singleUserDataTyped.bio}
                             <h2 class="text--title-xs">Bio</h2>
-                            <p class="modal__content__main__body__bio">{$singleUserData.bio}</p>
+                            <p class="modal__content__main__body__bio">{singleUserDataTyped.bio}</p>
                         {/if}
-                        {#if $singleUserData.company}
+                        {#if singleUserDataTyped.company}
                             <h2 class="text--title-xs">Compañía</h2>
                             <p class="modal__content__main__body__company">
                                 <i class="icon-building" aria-hidden="true" />
-                                    {$singleUserData.company}
+                                    {singleUserDataTyped.company}
                             </p>
                         {/if}
                         <div class="modal__content__main__body__repos-and-followers">
@@ -91,28 +93,28 @@
                                 <h2 class="text--small">
                                     <i class="icon-book" aria-hidden="true" /> Repos públicos
                                 </h2>
-                                <p class="text--title-sm">{$singleUserData.public_repos}</p>
+                                <p class="text--title-sm">{singleUserDataTyped.public_repos}</p>
                             </div>
                             <div>
                                 <h2 class="text--small">
                                     <i class="icon-group" aria-hidden="true" /> Seguidores
                                 </h2>
-                                <p class="text--title-sm">{$singleUserData.followers}</p>
+                                <p class="text--title-sm">{singleUserDataTyped.followers}</p>
                             </div>
                             <div>
                                 <h2 class="text--small">
                                     <i class="icon-group" aria-hidden="true" /> Siguiendo
                                 </h2>
-                                <p class="text--title-sm">{$singleUserData.following}</p>
+                                <p class="text--title-sm">{singleUserDataTyped.following}</p>
                             </div>
                         </div>
-                        {#if $singleUserData.location}
+                        {#if singleUserDataTyped.location}
                             <p class="modal__content__main__body__location">
                                 <i class="icon-location" aria-hidden="true" />
-                                <span>{$singleUserData.location}</span>
+                                <span>{singleUserDataTyped.location}</span>
                             </p>
                         {/if}
-                        {#await getLatestPublicEvents($singleUserData.login) then latestCommitsData}
+                        {#await getLatestPublicEvents(singleUserDataTyped.login) then latestCommitsData}
                             {#if latestCommitsData.length > 0}
                                 <div class="modal__content__main__body__last-commit-info">
                                     <h2 class="text--title-xs">Último commit</h2>
@@ -133,10 +135,10 @@
                         <div class="modal__content__main__body__footer">
                             <p class="modal__content__main__body__footer__created text--small">
                                 <span class="text--bold">Usuario desde:</span>
-                                <span>{formatDate($singleUserData.created_at)}</span>
+                                <span>{formatDate(singleUserDataTyped.created_at)}</span>
                             </p>
                             <a
-                                    href={$singleUserData.html_url}
+                                    href={singleUserDataTyped.html_url}
                                     target="_blank"
                                     class="button button--secondary modal__content__main__body__footer__profile-link"
                             >

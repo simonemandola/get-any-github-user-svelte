@@ -10,10 +10,10 @@
   justify-content: center
   align-items: start
   column-gap: map.get(global_vars.$gap, "xs")
-  padding:
-    top: map.get(global_vars.$gap, "xxs")
-    left: map.get(global_vars.$gap, "m")
-    right: map.get(global_vars.$gap, "m")
+  padding-top: map.get(global_vars.$gap, "xxs")
+
+  @media screen and (max-width: 900px)
+    padding-inline: map.get(global_vars.$gap, "m")
 
   &__submit
     height: 100%

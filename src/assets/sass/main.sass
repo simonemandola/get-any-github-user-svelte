@@ -18,16 +18,20 @@
 @import "base/components/toast"
 @import "base/components/social-list"
 
-@media screen and (min-width: 901px)
-  @import "desktop/home"
-  @import "desktop/components/results"
-  @import "desktop/components/no-results"
-  @import "desktop/components/modal"
-  @import "desktop/components/header"
-
 @media screen and (max-width: 900px)
   @import "mobile/home"
   @import "mobile/components/results"
   @import "mobile/components/no-results"
-  @import "mobile/components/modal"
   @import "mobile/components/header"
+
+@media screen and (max-width: 600px)
+  @import "mobile/components/modal"
+
+@media screen and (min-width: 601px)
+  @import "desktop/components/modal"
+
+@media screen and (min-width: 901px)
+  @import "desktop/home"
+  @import "desktop/components/results"
+  @import "desktop/components/no-results"
+  @import "desktop/components/header"

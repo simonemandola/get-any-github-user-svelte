@@ -8,5 +8,3 @@ export enum ErrorMessages {
     ForbiddenWord = `No puede contener la palabra '${FORBIDDEN_WORD}'.`,
     MinLength = "Ingresa mínimo 4 caracteres."
 }
-
-export default ErrorMessages

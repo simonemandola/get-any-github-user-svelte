@@ -4,6 +4,9 @@
     import {fetchMoreUserDetails, getSingleUser} from "@/mixins/fetch"
     import Avatar from "@/components/Avatar.svelte"
     import SocialList from "@/components/SocialList.svelte";
+    import type {UserData} from "@/data/types";
+
+    $: usersDataTyped = $usersData as UserData
 
     let logoPositionX: number
 
@@ -32,18 +35,18 @@
 </script>
 
 <p class="container result__total-count">
-    <span class="text--bold">{$usersData.total_count}</span>
-    <span>{$usersData.total_count > 1 ? 'usuarios encontrados' : 'usuario encontrado'}</span>
+    <span class="text--bold">{usersDataTyped.total_count}</span>
+    <span>{usersDataTyped.total_count > 1 ? 'usuarios encontrados' : 'usuario encontrado'}</span>
 </p>
 <div class="result__list-container">
     <ul class="result__list">
-        {#each $usersData.items as user}
+        {#each usersDataTyped.items as user}
             <li class="result__list__item">
                 <div
                         role="button"
                         tabindex="0"
                         class="result__list__item__card"
-                        style:transform="{`translateX(${$usersData.items.length > 1 ? logoPositionX : 0}px)`}"
+                        style:transform="{`translateX(${logoPositionX}px)`}"
                         on:click={(event)=> handleGetSingleUser(event, user.login)}
                         on:keyup={(event)=> handleCardKeyUpEvent(event, user.login)}
                 >
@@ -58,10 +61,10 @@
                         </div>
                         <div class="result__list__item__card__inner-wrap__details">
                             {#await fetchMoreUserDetails(user.repos_url) then reposData }
-                                {#if reposData?.data.length > 0}
+                                {#if reposData.data.length > 0}
                                     <p title="Repositorios">
                                         <i class="icon-book" aria-hidden="true" />
-                                        { reposData?.hasMore ? '+' : '' }{ reposData?.data.length }
+                                        { reposData.hasMore ? '+' : '' }{ reposData?.data.length }
                                     </p>
                                 {:else}
                                     <p title="Repositorios">

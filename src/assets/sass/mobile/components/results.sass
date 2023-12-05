@@ -40,6 +40,9 @@
       margin-right: map.get(global_vars.$gap, "xs")
       scroll-snap-align: start
 
+      @media screen and (min-width: 600px)
+        width: map.get(global_vars.$space, "xl")
+
       &:last-child:not(:first-child) > &__card
         width: 100%
         padding-right: map.get(global_vars.$gap, "m")

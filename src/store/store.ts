@@ -1,4 +1,5 @@
-import { writable, readable } from "svelte/store"
+import {writable, readable, type Writable} from "svelte/store"
+import type {Paginator, UserData, SingleUserData} from "@/data/types";
 
 // writable
 
@@ -24,13 +25,13 @@ toast.subscribe((toastStore)=> {
     }, 2500)
 })
 
-export const usersData = writable({})
+export const usersData: Writable<UserData | {}> = writable({})
 
-export const singleUserData = writable({})
+export const singleUserData: Writable<SingleUserData | {}> = writable({})
 
 export const showLoading = writable(false)
 
-export const paginator = writable({})
+export const paginator: Writable<Paginator> = writable({})
 
 export const currentPage = writable(1)
 

@@ -1,5 +1,6 @@
 import {currentPage, paginator, showLoading, singleUserData, toast, usersData} from "@/store/store"
 import {ErrorMessages} from "@/data/data"
+import type {FollowersData, latestCommitData, ReposData} from "@/data/types";
 
 const BASE_URL = "https://api.github.com"
 
@@ -24,10 +25,10 @@ export function parseResponseHeadersLinks(headersLinks: string | null): object {
 
     headersLinks.split(",").forEach((link: string): void => {
 
-        const url: string = /<([^>]+)/g.exec(link)[1]
-        const rel: string = /rel="([^"]+)/g.exec(link)[1]
+        const url: string = /<([^>]+)/g.exec(link)![1]
+        const rel: string = /rel="([^"]+)/g.exec(link)![1]
 
-        links[rel] = url
+        Object.assign(links, {[rel]: url})
 
     })
     return links
@@ -79,7 +80,7 @@ export async function getSingleUser(username: string): Promise<void> {
     }
 }
 
-export async function getLatestPublicEvents(username: string): Promise<object[]> {
+export async function getLatestPublicEvents(username: string): Promise<latestCommitData[]> {
     showLoading.set(true)
     try {
         const response = await fetch(`${BASE_URL}/users/${username}/events/public`, { headers })
@@ -96,7 +97,7 @@ export async function getLatestPublicEvents(username: string): Promise<object[]>
     }
 }
 
-export async function fetchMoreUserDetails(url: string): Promise<object> {
+export async function fetchMoreUserDetails(url: string): Promise<ReposData | FollowersData> {
     try {
         const response = await fetch(url, { headers })
         return {
@@ -105,6 +106,6 @@ export async function fetchMoreUserDetails(url: string): Promise<object> {
         }
     } catch (error) {
         console.error(error)
-        return {}
+        return {} as ReposData | FollowersData
     }
 }
