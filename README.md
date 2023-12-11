@@ -11,6 +11,11 @@ Clone the repository https://github.com/simonemandola/get-any-github-user-svelte
 ```bash
 npm install
 ```
+You need .env variable
+
+```
+VITE_GITHUB_TOKEN=
+```
 
 ## Run Development Server 🏃‍♂️
 Run the command below:
