@@ -1,6 +1,6 @@
 import {currentPage, paginator, showLoading, singleUserData, toast, usersData} from "@/store/store"
 import {ErrorMessages} from "@/data/data"
-import type {FollowersData, latestCommitData, ReposData} from "@/data/types";
+import type {FollowersData, latestCommitData, ReposData} from "@/data/types"
 
 const BASE_URL = "https://api.github.com"
 
@@ -49,13 +49,13 @@ export async function fetchGitHubUsers(username: string, url?: string): Promise<
             : `${BASE_URL}/search/users?q=${username}+in:login&per_page=10`
 
         const response = await fetch( urlToFetch, { headers })
-        paginator.set(parseResponseHeadersLinks(response.headers.get("link")))
 
         const dataJson = await response.json()
 
         if (dataJson.items.length === 0) {
             pushMessageToToast(ErrorMessages.NotFound)
         } else {
+            paginator.set(parseResponseHeadersLinks(response.headers.get("link")))
             usersData.set(dataJson)
         }
     } catch (error) {

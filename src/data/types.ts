@@ -1,4 +1,3 @@
-import {fetchMoreUserDetails} from "@/mixins/fetch";
 
 export interface UserData {
     total_count: number,
@@ -49,13 +48,6 @@ export interface FollowersData extends Pick<ReposData, "hasMore"> {
     data: {
         login: string,
         avatar_url: string,
-    }
-}
-
-export interface Social {
-    data: {
-        provider: string,
-        url: string
     }
 }
 

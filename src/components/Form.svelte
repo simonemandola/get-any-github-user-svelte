@@ -1,28 +1,19 @@
 <script lang="ts">
     import {toast} from "@/store/store"
-    import {ErrorMessages, FORBIDDEN_WORD, MIN_LENGTH_INPUT} from "@/data/data";
-    import {fetchGitHubUsers} from "@/mixins/fetch";
+    import {ErrorMessages, MIN_LENGTH_INPUT} from "@/data/data"
+    import {fetchGitHubUsers} from "@/mixins/fetch"
 
     $: username = ""
     $: isDisabledSubmit = (username?.length === 0)
 
     async function submitForm(): Promise<void> {
         username = username.trim()
-        if (username.length < MIN_LENGTH_INPUT || username.toLowerCase().includes(FORBIDDEN_WORD)) {
-
-            if (username.length < MIN_LENGTH_INPUT) {
-                toast.update((toast)=> {
-                    toast.show = true
-                    toast.messages.push(ErrorMessages.MinLength)
-                    return toast
-                })
-            } else {
-                toast.update((toast)=> {
-                    toast.show = true
-                    toast.messages.push(ErrorMessages.ForbiddenWord)
-                    return toast
-                })
-            }
+        if (username.length < MIN_LENGTH_INPUT) {
+          toast.update((toast)=> {
+            toast.show = true
+            toast.messages.push(ErrorMessages.MinLength)
+            return toast
+          })
         } else {
             await fetchGitHubUsers(username)
             username = ""
