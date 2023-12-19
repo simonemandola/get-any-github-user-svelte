@@ -38,12 +38,6 @@ export async function fetchGitHubUsers(username: string, url?: string): Promise<
     showLoading.set(true)
     try {
 
-        if (url) {
-            currentPage.set(parseInt(url?.split(/&page=/)[1]))
-        } else {
-            currentPage.set(1)
-        }
-
         const urlToFetch: string = url
             ? url
             : `${BASE_URL}/search/users?q=${username}+in:login&per_page=10`
@@ -55,6 +49,11 @@ export async function fetchGitHubUsers(username: string, url?: string): Promise<
         if (dataJson.items.length === 0) {
             pushMessageToToast(ErrorMessages.NotFound)
         } else {
+            if (url) {
+                currentPage.set(parseInt(url?.split(/&page=/)[1]))
+            } else {
+                currentPage.set(1)
+            }
             paginator.set(parseResponseHeadersLinks(response.headers.get("link")))
             usersData.set(dataJson)
         }

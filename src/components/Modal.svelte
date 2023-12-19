@@ -5,7 +5,8 @@
     import {formatDate} from "@/mixins/date"
     import {getLatestPublicEvents} from "@/mixins/fetch"
     import SocialList from "@/components/SocialList.svelte"
-    import type {SingleUserData} from "@/data/types";
+    import type {SingleUserData} from "@/data/types"
+    import imgUrl404 from "@/assets/img/404.webp"
 
     $: singleUserDataTyped = $singleUserData as SingleUserData
     $: showModal.set(Object.keys($singleUserData || {}).length > 0)
@@ -31,8 +32,10 @@
     }
 
     window.onkeyup = (event)=> {
+      if ($showModal) {
         if (event.code === "Escape")
-            closeModal()
+          closeModal()
+      }
     }
 
 
@@ -52,9 +55,9 @@
             <section class="modal__content__main">
                 <div class="modal__content__main__header">
                     <Avatar avatarUrl={singleUserDataTyped.avatar_url} avatarName={singleUserDataTyped.login} />
-                    <SocialList userUrl={singleUserDataTyped.url} />
                     {#if singleUserDataTyped.login}
-                        <h1 class="modal__content__main__header__name text--title-sm">{singleUserDataTyped.login}</h1>
+                      <SocialList userUrl={singleUserDataTyped.url} />
+                      <h1 class="modal__content__main__header__name text--title-sm">{singleUserDataTyped.login}</h1>
                     {/if}
                 </div>
                 <div class="modal__content__main__body">
@@ -153,7 +156,7 @@
                             </h1>
                             <img
                                     class="modal__content__main__body__not-found__img"
-                                    src="src/assets/img/404.webp"
+                                    src={imgUrl404}
                                     alt="Usuario no encontrado"
                             >
                         </section>
