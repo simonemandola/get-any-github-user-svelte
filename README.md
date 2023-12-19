@@ -49,8 +49,8 @@ Publish directory: **/dist**
 ![](src/assets/img/screenshots/desktop-3.png)
 
 ### Mobile
-<ul style="display: flex; flex-direction: column; align-items: center; row-gap: 1rem">
+<div style="display: flex; flex-direction: column; align-items: center; row-gap: 1rem">
     <img src="src/assets/img/screenshots/mobile-1.png" width="300" style="border-radius: 1rem; border: 8px solid #232323"/>
     <img src="src/assets/img/screenshots/mobile-2.png" width="300" style="border-radius: 1rem; border: 8px solid #232323"/>
     <img src="src/assets/img/screenshots/mobile-3.png" width="300" style="border-radius: 1rem; border: 8px solid #232323"/>
-</ul>
+</div>
